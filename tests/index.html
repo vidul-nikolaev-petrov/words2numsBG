@@ -16,7 +16,7 @@
             // const expect = chai.expect;
             const assert = chai.assert;
 
-            describe("Едноцифрени", function () {
+            describe("Едноцифрени числа", function () {
                 it("следва да върне 1", function () {
                     assert.equal(words2numbers("Това е едно"), "1");
                 });
@@ -43,6 +43,24 @@
                 });
                 it("следва да върне 9", function () {
                     assert.equal(words2numbers("Това е ДЕВЕТ."), "9");
+                });
+            });
+
+            describe("Двуцифрени числа", function () {
+                it("следва да върне 10", function () {
+                    assert.equal(words2numbers("Това е десет"), "10");
+                });
+                it("следва да върне 15", function () {
+                    assert.equal(words2numbers("Петнадесет - тест."), "15");
+                });
+                it("следва да върне 17", function () {
+                    assert.equal(words2numbers("Тест - Седемнадесет - тест."), "17");
+                });
+                it("следва да върне 20", function () {
+                    assert.equal(words2numbers("Тест за двадесет!"), "20");
+                });
+                it("следва да върне 33", function () {
+                    assert.equal(words2numbers("Тест: тридесет и три..."), "33");
                 });
             });
         </script>
