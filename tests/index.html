@@ -7,6 +7,7 @@
     <body>
         <div id="mocha"></div>
         <script src="../src/index.js"></script>
+        <script src="../tests/data.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.3.4/chai.min.js"></script>
         <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
         <script>
@@ -62,6 +63,15 @@
                 it("следва да върне 33", function () {
                     assert.equal(words2numbers("Тест: тридесет и три..."), "33");
                 });
+            });
+
+            describe("Всички числа от едно до сто", function () {
+                data.zeroTo100.forEach((e) => {
+                    it(`проверка на числото ${e[0]}`, function () {
+                        assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
+                    });
+                });
+                console.log(data.zeroTo100)
             });
         </script>
         <script>
