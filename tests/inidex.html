@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Words to Numbers in Bulgarian</title>
+        <link rel="stylesheet" href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" />
+    </head>
+    <body>
+        <div id="mocha"></div>
+        <script src="../src/index.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.3.4/chai.min.js"></script>
+        <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+        <script>
+            mocha.setup("bdd");
+        </script>
+        <script>
+            // const expect = chai.expect;
+            const assert = chai.assert;
+
+            describe("Едноцифрени", function () {
+                it("следва да върне 1", function () {
+                    assert.equal(words2numbers("Това е едно"), "1");
+                });
+                it("следва да върне 2", function () {
+                    assert.equal(words2numbers("Това е две."), "2");
+                });
+                it("следва да върне 3", function () {
+                    assert.equal(words2numbers("Това е три; други неща..."), "3");
+                });
+                it("следва да върне 4", function () {
+                    assert.equal(words2numbers("Четири е число и цифра"), "4");
+                });
+                it("следва да върне 5", function () {
+                    assert.equal(words2numbers("Цифрата пет в текст..."), "5");
+                });
+                it("следва да върне 6", function () {
+                    assert.equal(words2numbers("Шест- с тире."), "6");
+                });
+                it("следва да върне 7", function () {
+                    assert.equal(words2numbers("Това е седем;"), "7");
+                });
+                it("следва да върне 8", function () {
+                    assert.equal(words2numbers("Това е - осем."), "8");
+                });
+                it("следва да върне 9", function () {
+                    assert.equal(words2numbers("Това е ДЕВЕТ."), "9");
+                });
+            });
+        </script>
+        <script>
+            mocha.run();
+        </script>
+    </body>
+</html>
