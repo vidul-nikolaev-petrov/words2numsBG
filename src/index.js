@@ -92,7 +92,7 @@ function words2numsBG(s) {
     function feach(w) {
         let x;
 
-        if ((x = Small[w])) {
+        if (x = Small[w]) {
             g = g + x;
             return;
         }
