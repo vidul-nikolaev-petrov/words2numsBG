@@ -6,7 +6,7 @@
  *
  */
 
-function words2numbers(s) {
+function words2numsBG(s) {
     const Small = {
         нула: 0,
         едно: 1,
@@ -90,19 +90,16 @@ function words2numbers(s) {
     return n + g;
 
     function feach(w) {
-        var x = Small[w];
-        if (x != null) {
+        let x;
+
+        if ((x = Small[w])) {
             g = g + x;
-        } else if (w == "сто") {
-            g = g * 100;
-        } else {
-            x = Magnitude[w];
-            if (x != null) {
-                n = n + g * x;
-                g = 0;
-            } else {
-                new Error("Непознато число: " + w);
-            }
+            return;
+        }
+
+        if (x = Magnitude[w]) {
+            n = n + g * x;
+            g = 0;
         }
     }
 }
