@@ -14,7 +14,6 @@
             mocha.setup("bdd");
         </script>
         <script>
-            // const expect = chai.expect;
             const assert = chai.assert;
 
             describe("Едноцифрени числа", function () {
@@ -110,6 +109,12 @@
                     it(`проверка на числото ${e[1]}: ${e[0]}`, function () {
                         assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
                     });
+                });
+            });
+
+            describe("Справка", function () {
+                it(`структурата с данни: ${JSON.stringify(data, null, 2)}`, function () {
+                    assert.equal(0, 0);
                 });
             });
         </script>
