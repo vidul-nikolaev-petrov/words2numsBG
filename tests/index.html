@@ -65,13 +65,52 @@
                 });
             });
 
-            describe("Всички числа от едно до сто", function () {
+            describe("Всички числа от нула до сто", function () {
                 data.zeroTo100.forEach((e) => {
-                    it(`проверка на числото ${e[0]}`, function () {
+                    it(`проверка на числото ${e[1]}`, function () {
                         assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
                     });
                 });
-                console.log(data.zeroTo100)
+            });
+
+            describe("Няколко числа от сто до хиляда", function () {
+                data.toHundred.forEach((e) => {
+                    it(`проверка на числото ${e[1]}: ${e[0]}`, function () {
+                        assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
+                    });
+                });
+            });
+
+            describe("Няколко числа от хиляда до милион", function () {
+                data.toMillion.forEach((e) => {
+                    it(`проверка на числото ${e[1]}: ${e[0]}`, function () {
+                        assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
+                    });
+                });
+            });
+
+            describe("Няколко числа от милион до милиард", function () {
+                data.toBillion.forEach((e) => {
+                    it(`проверка на числото ${e[1]}: ${e[0]}`, function () {
+                        assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
+                    });
+                });
+            });
+
+            describe("Няколко числа от милиард до трилион", function () {
+                data.toTrillion.forEach((e) => {
+                    it(`проверка на числото ${e[1]}: ${e[0]}`, function () {
+                        assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
+                    });
+                });
+            });
+
+            describe("Няколко числа от трилион до квадрилион", function () {
+                data.toQuadrillion.forEach((e) => {
+                    it(`проверка на числото ${e[1]}: ${e[0]}`, function () {
+                        assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
+                    });
+                });
             });
         </script>
         <script>
