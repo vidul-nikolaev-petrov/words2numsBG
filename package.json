@@ -1,8 +1,16 @@
 {
     "name": "words2nums-bg",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Converts words to number in Bulgarian",
     "author": "Видул Николаев Петров <vidul.petrov@gmail.com>",
+    "license": "GPL v3.0",
+    "main": "src/index.js",
+    "keywords": [
+        "converter",
+        "words",
+        "numbers",
+        "words to numbers"
+    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/vidul-nikolaev-petrov/words2numsBG.git"
