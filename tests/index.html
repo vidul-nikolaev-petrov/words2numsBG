@@ -2,120 +2,980 @@
 <html>
     <head>
         <title>Words to Numbers in Bulgarian</title>
-        <link rel="stylesheet" href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
     </head>
     <body>
         <div id="mocha"></div>
-        <script src="../src/index.js"></script>
-        <script src="../tests/data.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.3.4/chai.min.js"></script>
-        <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+        <script src="https://unpkg.com/chai@4/chai.js"></script>
+        <script src="https://unpkg.com/mocha/mocha.js"></script>
         <script>
             mocha.setup("bdd");
+            mocha.checkLeaks();
         </script>
+        <script src="../src/index.js"></script>
         <script>
             const assert = chai.assert;
             const words2numbers = words2numsBG;
 
             describe("Едноцифрени числа", function () {
                 it("следва да върне 1", function () {
-                    assert.equal(words2numbers("Това е едно"), "1");
+                    assert.equal(words2numbers("Числото едно"), 1);
                 });
                 it("следва да върне 2", function () {
-                    assert.equal(words2numbers("Това е две."), "2");
+                    assert.equal(words2numbers("Числото две."), 2);
                 });
                 it("следва да върне 3", function () {
-                    assert.equal(words2numbers("Това е три; други неща..."), "3");
+                    assert.equal(
+                        words2numbers("Числото три; други неща..."),
+                        3
+                    );
                 });
                 it("следва да върне 4", function () {
-                    assert.equal(words2numbers("Четири е число и цифра"), "4");
+                    assert.equal(words2numbers("Числото четири!"), 4);
                 });
                 it("следва да върне 5", function () {
-                    assert.equal(words2numbers("Цифрата пет в текст..."), "5");
+                    assert.equal(words2numbers("Цифрата пет в текст..."), 5);
                 });
                 it("следва да върне 6", function () {
-                    assert.equal(words2numbers("Шест- с тире."), "6");
+                    assert.equal(words2numbers("Шест - тире."), 6);
                 });
                 it("следва да върне 7", function () {
-                    assert.equal(words2numbers("Това е седем;"), "7");
+                    assert.equal(words2numbers("(седем);"), 7);
                 });
                 it("следва да върне 8", function () {
-                    assert.equal(words2numbers("Това е - осем."), "8");
+                    assert.equal(words2numbers("Числото осем."), 8);
                 });
                 it("следва да върне 9", function () {
-                    assert.equal(words2numbers("Това е ДЕВЕТ."), "9");
+                    assert.equal(words2numbers("Числото ДЕВЕТ."), 9);
                 });
             });
 
             describe("Двуцифрени числа", function () {
                 it("следва да върне 10", function () {
-                    assert.equal(words2numbers("Това е десет"), "10");
+                    assert.equal(words2numbers(":десет:"), 10);
                 });
                 it("следва да върне 15", function () {
-                    assert.equal(words2numbers("Петнадесет - тест."), "15");
+                    assert.equal(words2numbers("Петнадесет - тест."), 15);
                 });
                 it("следва да върне 17", function () {
-                    assert.equal(words2numbers("Тест - Седемнадесет - тест."), "17");
+                    assert.equal(
+                        words2numbers("Тест - Седемнадесет - тест."),
+                        17
+                    );
                 });
                 it("следва да върне 20", function () {
-                    assert.equal(words2numbers("Тест за двадесет!"), "20");
+                    assert.equal(words2numbers("Тест за двадесет!"), 20);
                 });
                 it("следва да върне 33", function () {
-                    assert.equal(words2numbers("Тест: тридесет и три..."), "33");
+                    assert.equal(
+                        words2numbers("Тест: тридесет и три..."),
+                        33
+                    );
                 });
             });
 
             describe("Всички числа от нула до сто", function () {
-                data.zeroTo100.forEach((e) => {
-                    it(`проверка на числото ${e[1]}`, function () {
-                        assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
-                    });
+                it("проверка на числото нула", function () {
+                    assert.equal(words2numbers("нула"), 0);
+                });
+                it("проверка на числото едно", function () {
+                    assert.equal(words2numbers("едно"), 1);
+                });
+                it("проверка на числото две", function () {
+                    assert.equal(words2numbers("две"), 2);
+                });
+                it("проверка на числото три", function () {
+                    assert.equal(words2numbers("три"), 3);
+                });
+                it("проверка на числото четири", function () {
+                    assert.equal(words2numbers("четири"), 4);
+                });
+                it("проверка на числото пет", function () {
+                    assert.equal(words2numbers("пет"), 5);
+                });
+                it("проверка на числото шест", function () {
+                    assert.equal(words2numbers("шест"), 6);
+                });
+                it("проверка на числото седем", function () {
+                    assert.equal(words2numbers("седем"), 7);
+                });
+                it("проверка на числото осем", function () {
+                    assert.equal(words2numbers("осем"), 8);
+                });
+                it("проверка на числото девет", function () {
+                    assert.equal(words2numbers("девет"), 9);
+                });
+                it("проверка на числото десет", function () {
+                    assert.equal(words2numbers("десет"), 10);
+                });
+                it("проверка на числото единадесет", function () {
+                    assert.equal(words2numbers("единадесет"), 11);
+                });
+                it("проверка на числото дванадесет", function () {
+                    assert.equal(words2numbers("дванадесет"), 12);
+                });
+                it("проверка на числото тринадесет", function () {
+                    assert.equal(words2numbers("тринадесет"), 13);
+                });
+                it("проверка на числото четиринадесет", function () {
+                    assert.equal(words2numbers("четиринадесет"), 14);
+                });
+                it("проверка на числото петнадесет", function () {
+                    assert.equal(words2numbers("петнадесет"), 15);
+                });
+                it("проверка на числото шестнадесет", function () {
+                    assert.equal(words2numbers("шестнадесет"), 16);
+                });
+                it("проверка на числото седемнадесет", function () {
+                    assert.equal(words2numbers("седемнадесет"), 17);
+                });
+                it("проверка на числото осемнадесет", function () {
+                    assert.equal(words2numbers("осемнадесет"), 18);
+                });
+                it("проверка на числото деветнадесет", function () {
+                    assert.equal(words2numbers("деветнадесет"), 19);
+                });
+                it("проверка на числото двадесет", function () {
+                    assert.equal(words2numbers("двадесет"), 20);
+                });
+                it("проверка на числото двадесет и едно", function () {
+                    assert.equal(words2numbers("двадесет и едно"), 21);
+                });
+                it("проверка на числото двадесет и две", function () {
+                    assert.equal(words2numbers("двадесет и две"), 22);
+                });
+                it("проверка на числото двадесет и три", function () {
+                    assert.equal(words2numbers("двадесет и три"), 23);
+                });
+                it("проверка на числото двадесет и четири", function () {
+                    assert.equal(words2numbers("двадесет и четири"), 24);
+                });
+                it("проверка на числото двадесет и пет", function () {
+                    assert.equal(words2numbers("двадесет и пет"), 25);
+                });
+                it("проверка на числото двадесет и шест", function () {
+                    assert.equal(words2numbers("двадесет и шест"), 26);
+                });
+                it("проверка на числото двадесет и седем", function () {
+                    assert.equal(words2numbers("двадесет и седем"), 27);
+                });
+                it("проверка на числото двадесет и осем", function () {
+                    assert.equal(words2numbers("двадесет и осем"), 28);
+                });
+                it("проверка на числото двадесет и девет", function () {
+                    assert.equal(words2numbers("двадесет и девет"), 29);
+                });
+                it("проверка на числото тридесет", function () {
+                    assert.equal(words2numbers("тридесет"), 30);
+                });
+                it("проверка на числото тридесет и едно", function () {
+                    assert.equal(words2numbers("тридесет и едно"), 31);
+                });
+                it("проверка на числото тридесет и две", function () {
+                    assert.equal(words2numbers("тридесет и две"), 32);
+                });
+                it("проверка на числото тридесет и три", function () {
+                    assert.equal(words2numbers("тридесет и три"), 33);
+                });
+                it("проверка на числото тридесет и четири", function () {
+                    assert.equal(words2numbers("тридесет и четири"), 34);
+                });
+                it("проверка на числото тридесет и пет", function () {
+                    assert.equal(words2numbers("тридесет и пет"), 35);
+                });
+                it("проверка на числото тридесет и шест", function () {
+                    assert.equal(words2numbers("тридесет и шест"), 36);
+                });
+                it("проверка на числото тридесет и седем", function () {
+                    assert.equal(words2numbers("тридесет и седем"), 37);
+                });
+                it("проверка на числото тридесет и осем", function () {
+                    assert.equal(words2numbers("тридесет и осем"), 38);
+                });
+                it("проверка на числото тридесет и девет", function () {
+                    assert.equal(words2numbers("тридесет и девет"), 39);
+                });
+                it("проверка на числото четиридесет", function () {
+                    assert.equal(words2numbers("четиридесет"), 40);
+                });
+                it("проверка на числото четиридесет и едно", function () {
+                    assert.equal(words2numbers("четиридесет и едно"), 41);
+                });
+                it("проверка на числото четиридесет и две", function () {
+                    assert.equal(words2numbers("четиридесет и две"), 42);
+                });
+                it("проверка на числото четиридесет и три", function () {
+                    assert.equal(words2numbers("четиридесет и три"), 43);
+                });
+                it("проверка на числото четиридесет и четири", function () {
+                    assert.equal(words2numbers("четиридесет и четири"), 44);
+                });
+                it("проверка на числото четиридесет и пет", function () {
+                    assert.equal(words2numbers("четиридесет и пет"), 45);
+                });
+                it("проверка на числото четиридесет и шест", function () {
+                    assert.equal(words2numbers("четиридесет и шест"), 46);
+                });
+                it("проверка на числото четиридесет и седем", function () {
+                    assert.equal(words2numbers("четиридесет и седем"), 47);
+                });
+                it("проверка на числото четиридесет и осем", function () {
+                    assert.equal(words2numbers("четиридесет и осем"), 48);
+                });
+                it("проверка на числото четиридесет и девет", function () {
+                    assert.equal(words2numbers("четиридесет и девет"), 49);
+                });
+                it("проверка на числото петдесет", function () {
+                    assert.equal(words2numbers("петдесет"), 50);
+                });
+                it("проверка на числото петдесет и едно", function () {
+                    assert.equal(words2numbers("петдесет и едно"), 51);
+                });
+                it("проверка на числото петдесет и две", function () {
+                    assert.equal(words2numbers("петдесет и две"), 52);
+                });
+                it("проверка на числото петдесет и три", function () {
+                    assert.equal(words2numbers("петдесет и три"), 53);
+                });
+                it("проверка на числото петдесет и четири", function () {
+                    assert.equal(words2numbers("петдесет и четири"), 54);
+                });
+                it("проверка на числото петдесет и пет", function () {
+                    assert.equal(words2numbers("петдесет и пет"), 55);
+                });
+                it("проверка на числото петдесет и шест", function () {
+                    assert.equal(words2numbers("петдесет и шест"), 56);
+                });
+                it("проверка на числото петдесет и седем", function () {
+                    assert.equal(words2numbers("петдесет и седем"), 57);
+                });
+                it("проверка на числото петдесет и осем", function () {
+                    assert.equal(words2numbers("петдесет и осем"), 58);
+                });
+                it("проверка на числото петдесет и девет", function () {
+                    assert.equal(words2numbers("петдесет и девет"), 59);
+                });
+                it("проверка на числото шестдесет", function () {
+                    assert.equal(words2numbers("шестдесет"), 60);
+                });
+                it("проверка на числото шестдесет и едно", function () {
+                    assert.equal(words2numbers("шестдесет и едно"), 61);
+                });
+                it("проверка на числото шестдесет и две", function () {
+                    assert.equal(words2numbers("шестдесет и две"), 62);
+                });
+                it("проверка на числото шестдесет и три", function () {
+                    assert.equal(words2numbers("шестдесет и три"), 63);
+                });
+                it("проверка на числото шестдесет и четири", function () {
+                    assert.equal(words2numbers("шестдесет и четири"), 64);
+                });
+                it("проверка на числото шестдесет и пет", function () {
+                    assert.equal(words2numbers("шестдесет и пет"), 65);
+                });
+                it("проверка на числото шестдесет и шест", function () {
+                    assert.equal(words2numbers("шестдесет и шест"), 66);
+                });
+                it("проверка на числото шестдесет и седем", function () {
+                    assert.equal(words2numbers("шестдесет и седем"), 67);
+                });
+                it("проверка на числото шестдесет и осем", function () {
+                    assert.equal(words2numbers("шестдесет и осем"), 68);
+                });
+                it("проверка на числото шестдесет и девет", function () {
+                    assert.equal(words2numbers("шестдесет и девет"), 69);
+                });
+                it("проверка на числото седемдесет", function () {
+                    assert.equal(words2numbers("седемдесет"), 70);
+                });
+                it("проверка на числото седемдесет и едно", function () {
+                    assert.equal(words2numbers("седемдесет и едно"), 71);
+                });
+                it("проверка на числото седемдесет и две", function () {
+                    assert.equal(words2numbers("седемдесет и две"), 72);
+                });
+                it("проверка на числото седемдесет и три", function () {
+                    assert.equal(words2numbers("седемдесет и три"), 73);
+                });
+                it("проверка на числото седемдесет и четири", function () {
+                    assert.equal(words2numbers("седемдесет и четири"), 74);
+                });
+                it("проверка на числото седемдесет и пет", function () {
+                    assert.equal(words2numbers("седемдесет и пет"), 75);
+                });
+                it("проверка на числото седемдесет и шест", function () {
+                    assert.equal(words2numbers("седемдесет и шест"), 76);
+                });
+                it("проверка на числото седемдесет и седем", function () {
+                    assert.equal(words2numbers("седемдесет и седем"), 77);
+                });
+                it("проверка на числото седемдесет и осем", function () {
+                    assert.equal(words2numbers("седемдесет и осем"), 78);
+                });
+                it("проверка на числото седемдесет и девет", function () {
+                    assert.equal(words2numbers("седемдесет и девет"), 79);
+                });
+                it("проверка на числото осемдесет", function () {
+                    assert.equal(words2numbers("осемдесет"), 80);
+                });
+                it("проверка на числото осемдесет и едно", function () {
+                    assert.equal(words2numbers("осемдесет и едно"), 81);
+                });
+                it("проверка на числото осемдесет и две", function () {
+                    assert.equal(words2numbers("осемдесет и две"), 82);
+                });
+                it("проверка на числото осемдесет и три", function () {
+                    assert.equal(words2numbers("осемдесет и три"), 83);
+                });
+                it("проверка на числото осемдесет и четири", function () {
+                    assert.equal(words2numbers("осемдесет и четири"), 84);
+                });
+                it("проверка на числото осемдесет и пет", function () {
+                    assert.equal(words2numbers("осемдесет и пет"), 85);
+                });
+                it("проверка на числото осемдесет и шест", function () {
+                    assert.equal(words2numbers("осемдесет и шест"), 86);
+                });
+                it("проверка на числото осемдесет и седем", function () {
+                    assert.equal(words2numbers("осемдесет и седем"), 87);
+                });
+                it("проверка на числото осемдесет и осем", function () {
+                    assert.equal(words2numbers("осемдесет и осем"), 88);
+                });
+                it("проверка на числото осемдесет и девет", function () {
+                    assert.equal(words2numbers("осемдесет и девет"), 89);
+                });
+                it("проверка на числото деветдесет", function () {
+                    assert.equal(words2numbers("деветдесет"), 90);
+                });
+                it("проверка на числото деветдесет и едно", function () {
+                    assert.equal(words2numbers("деветдесет и едно"), 91);
+                });
+                it("проверка на числото деветдесет и две", function () {
+                    assert.equal(words2numbers("деветдесет и две"), 92);
+                });
+                it("проверка на числото деветдесет и три", function () {
+                    assert.equal(words2numbers("деветдесет и три"), 93);
+                });
+                it("проверка на числото деветдесет и четири", function () {
+                    assert.equal(words2numbers("деветдесет и четири"), 94);
+                });
+                it("проверка на числото деветдесет и пет", function () {
+                    assert.equal(words2numbers("деветдесет и пет"), 95);
+                });
+                it("проверка на числото деветдесет и шест", function () {
+                    assert.equal(words2numbers("деветдесет и шест"), 96);
+                });
+                it("проверка на числото деветдесет и седем", function () {
+                    assert.equal(words2numbers("деветдесет и седем"), 97);
+                });
+                it("проверка на числото деветдесет и осем", function () {
+                    assert.equal(words2numbers("деветдесет и осем"), 98);
+                });
+                it("проверка на числото деветдесет и девет", function () {
+                    assert.equal(words2numbers("деветдесет и девет"), 99);
+                });
+                it("проверка на числото сто", function () {
+                    assert.equal(words2numbers("сто"), 100);
                 });
             });
 
             describe("Няколко числа от сто до хиляда", function () {
-                data.toHundred.forEach((e) => {
-                    it(`проверка на числото ${e[1]}: ${e[0]}`, function () {
-                        assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
-                    });
+                it("проверка на числото триста четиридесет и пет", function () {
+                    assert.equal(
+                        words2numbers("триста четиридесет и пет"),
+                        345
+                    );
+                });
+                it("проверка на числото шестстотин двадесет и девет", function () {
+                    assert.equal(
+                        words2numbers("шестстотин двадесет и девет"),
+                        629
+                    );
+                });
+                it("проверка на числото двеста седемдесет и две", function () {
+                    assert.equal(words2numbers("двеста седемдесет и две"), 272);
+                });
+                it("проверка на числото осемстотин четиринадесет", function () {
+                    assert.equal(
+                        words2numbers("осемстотин четиринадесет"),
+                        814
+                    );
+                });
+                it("проверка на числото петстотин тридесет и седем", function () {
+                    assert.equal(
+                        words2numbers("петстотин тридесет и седем"),
+                        537
+                    );
+                });
+                it("проверка на числото сто петдесет и три", function () {
+                    assert.equal(words2numbers("сто петдесет и три"), 153);
+                });
+                it("проверка на числото четиристотин деветдесет и седем", function () {
+                    assert.equal(
+                        words2numbers("четиристотин деветдесет и седем"),
+                        497
+                    );
+                });
+                it("проверка на числото шестстотин осемдесет и девет", function () {
+                    assert.equal(
+                        words2numbers("шестстотин осемдесет и девет"),
+                        689
+                    );
+                });
+                it("проверка на числото деветстотин двадесет", function () {
+                    assert.equal(words2numbers("деветстотин двадесет"), "920");
+                });
+                it("проверка на числото седемстотин шестдесет и три", function () {
+                    assert.equal(
+                        words2numbers("седемстотин шестдесет и три"),
+                        763
+                    );
+                });
+                it("проверка на числото двеста осемнадесет", function () {
+                    assert.equal(words2numbers("двеста осемнадесет"), "218");
+                });
+                it("проверка на числото триста деветдесет и шест", function () {
+                    assert.equal(
+                        words2numbers("триста деветдесет и шест"),
+                        396
+                    );
+                });
+                it("проверка на числото петстотин двадесет и едно", function () {
+                    assert.equal(
+                        words2numbers("петстотин двадесет и едно"),
+                        521
+                    );
+                });
+                it("проверка на числото седемстотин седемдесет", function () {
+                    assert.equal(words2numbers("седемстотин седемдесет"), 770);
+                });
+                it("проверка на числото осемстотин петдесет и шест", function () {
+                    assert.equal(
+                        words2numbers("осемстотин петдесет и шест"),
+                        856
+                    );
                 });
             });
 
             describe("Няколко числа от хиляда до милион", function () {
-                data.toMillion.forEach((e) => {
-                    it(`проверка на числото ${e[1]}: ${e[0]}`, function () {
-                        assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
-                    });
+                it(`проверка на числото двадесет и четири
+                        хиляди седемстотин тридесет и девет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            "двадесет и четири хиляди седемстотин тридесет и девет"
+                        ),
+                        24739
+                    );
+                });
+                it(`проверка на числото триста шестдесет
+                        и осем хиляди двеста петнадесет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            "триста шестдесет и осем хиляди двеста петнадесет"
+                        ),
+                        368215
+                    );
+                });
+                it(`проверка на числото петстотин деветдесет
+                        хиляди триста осемдесет и две`, function () {
+                    assert.equal(
+                        words2numbers(
+                            "петстотин деветдесет хиляди триста осемдесет и две"
+                        ),
+                        590382
+                    );
+                });
+                it(`проверка на числото сто петдесет
+                        и три хиляди двеста осем`, function () {
+                    assert.equal(
+                        words2numbers("сто петдесет и три хиляди двеста осем"),
+                        153208
+                    );
+                });
+                it(`проверка на числото дванадесет
+                        хиляди четиридесет и пет`, function () {
+                    assert.equal(
+                        words2numbers("дванадесет хиляди четиридесет и пет"),
+                        12045
+                    );
+                });
+                it(`проверка на числото двеста
+                        и тридесет хиляди петстотин шестдесет и седем`, function () {
+                    assert.equal(
+                        words2numbers(
+                            "двеста и тридесет хиляди петстотин шестдесет и седем"
+                        ),
+                        230567
+                    );
+                });
+                it(`проверка на числото осемстотин четиридесет
+                        и шест хиляди сто двадесет и три`, function () {
+                    assert.equal(
+                        words2numbers(
+                            "осемстотин четиридесет и шест хиляди сто двадесет и три"
+                        ),
+                        846123
+                    );
+                });
+                it(`проверка на числото триста седемдесет
+                        и осем хиляди и две`, function () {
+                    assert.equal(
+                        words2numbers("триста седемдесет и осем хиляди и две"),
+                        378002
+                    );
+                });
+                it(`проверка на числото шестдесет
+                        и пет хиляди деветдесет и едно`, function () {
+                    assert.equal(
+                        words2numbers(
+                            "шестдесет и пет хиляди деветдесет и едно"
+                        ),
+                        65091
+                    );
+                });
+                it(`проверка на числото четиристотин деветдесет
+                        и три хиляди двеста и десет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            "четиристотин деветдесет и три хиляди двеста и десет"
+                        ),
+                        493210
+                    );
+                });
+                it(`проверка на числото седемстотин двадесет
+                        и една хиляди петстотин шестдесет и осем`, function () {
+                    assert.equal(
+                        words2numbers(
+                            "седемстотин двадесет и една хиляди петстотин шестдесет и осем"
+                        ),
+                        721568
+                    );
+                });
+                it(`проверка на числото деветстотин
+                        четиридесет хиляди триста седемнадесет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            "деветстотин четиридесет хиляди триста седемнадесет"
+                        ),
+                        940317
+                    );
+                });
+                it(`проверка на числото двеста осемдесет
+                        и осем хиляди четиристотин деветдесет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            "двеста осемдесет и осем хиляди четиристотин деветдесет"
+                        ),
+                        288490
+                    );
+                });
+                it(`проверка на числото сто петдесет
+                        и седем хиляди осемстотин тридесет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            "сто петдесет и седем хиляди осемстотин тридесет"
+                        ),
+                        157830
+                    );
                 });
             });
 
             describe("Няколко числа от милион до милиард", function () {
-                data.toBillion.forEach((e) => {
-                    it(`проверка на числото ${e[1]}: ${e[0]}`, function () {
-                        assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
-                    });
+                it(`проверка на числото дванадесет милиона четиридесет
+                        и пет хиляди шестстотин седемдесет и осем`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `дванадесет милиона четиридесет и пет хиляди шестстотин седемдесет и осем`
+                        ),
+                        12045678
+                    );
+                });
+                it(`проверка на числото двеста и тридесет милиона
+                        петстотин шестдесет и седем хиляди
+                        осемстотин и деветдесет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `двеста и тридесет милиона петстотин шестдесет
+                                    и седем хиляди осемстотин и деветдесет`
+                        ),
+                        230567890
+                    );
+                });
+                it(`проверка на числото осемстотин четиридесет
+                        и шест милиона сто двадесет
+                        и три хиляди четиристотин петдесет и шест`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `осемстотин четиридесет и шест милиона сто двадесет
+                                и три хиляди четиристотин петдесет и шест`
+                        ),
+                        846123456
+                    );
+                });
+                it(`проверка на числото триста седемдесет
+                        и осем милиона две хиляди деветстотин и десет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `триста седемдесет и осем милиона
+                                две хиляди деветстотин и десет`
+                        ),
+                        378002910
+                    );
+                });
+                it(`проверка на числото шестдесет и пет милиона
+                        деветдесет и една хиляда триста двадесет и пет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `шестдесет и пет милиона деветдесет
+                                и една хиляда триста двадесет и пет`
+                        ),
+                        65091325
+                    );
+                });
+                it(`проверка на числото четиристотин тридесет
+                        и един милиона осемстотин деветдесет
+                        хиляди двеста шестдесет и седем`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `четиристотин тридесет и един милиона осемстотин
+                                деветдесет хиляди двеста шестдесет и седем`
+                        ),
+                        431890267
+                    );
+                });
+                it(`проверка на числото деветстотин седемнадесет милиона
+                        двеста шестдесет и три хиляди сто двадесет и осем`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `деветстотин седемнадесет милиона двеста шестдесет 
+                                и три хиляди сто двадесет и осем`
+                        ),
+                        917263128
+                    );
+                });
+                it(`проверка на числото сто петдесет
+                        и девет милиона триста осемдесет
+                        и четири хиляди двеста шестнадесет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `сто петдесет и девет милиона триста
+                                осемдесет и четири хиляди двеста шестнадесет`
+                        ),
+                        159384216
+                    );
+                });
+                it(`проверка на числото двеста деветдесет
+                        и осем милиона седемстотин и десет
+                        хиляди петстотин шестдесет и три`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `двеста деветдесет и осем милиона седемстотин
+                                и десет хиляди петстотин шестдесет и три`
+                        ),
+                        298710563
+                    );
+                });
+                it(`проверка на числото осемстотин седемдесет
+                        и три милиона петстотин и двадесет хиляди
+                        сто четиридесет и девет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `осемстотин седемдесет и три милиона петстотин
+                                и двадесет хиляди сто четиридесет и девет`
+                        ),
+                        873520149
+                    );
+                });
+                it(`проверка на числото сто двадесет
+                        и осем милиона деветстотин шест хиляди
+                        седемстотин петдесет и четири`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `сто двадесет и осем милиона деветстотин шест
+                                хиляди седемстотин петдесет и четири`
+                        ),
+                        128906754
+                    );
+                });
+                it(`проверка на числото шестстотин седемдесет
+                        и пет милиона триста четиридесет и една
+                        хиляда деветстотин осемдесет и две`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `шестстотин седемдесет и пет милиона триста четиридесет
+                                и една хиляда деветстотин осемдесет и две`
+                        ),
+                        675341982
+                    );
+                });
+                it(`проверка на числото четиристотин шестдесет
+                        и три милиона двеста петнадесет хиляди
+                        осемстотин деветдесет и седем`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `четиристотин шестдесет и три милиона двеста
+                                петнадесет хиляди осемстотин деветдесет и седем`
+                        ),
+                        463215897
+                    );
+                });
+                it(`проверка на числото деветстотин тридесет
+                        и пет милиона седемстотин и двадесет хиляди
+                        четиристотин шестдесет и осем`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `деветстотин тридесет и пет милиона седемстотин
+                                и двадесет хиляди четиристотин шестдесет и осем`
+                        ),
+                        935720468
+                    );
+                });
+                it(`проверка на числото двеста осемдесет
+                        и четири милиона сто деветдесет
+                        и шест хиляди седемдесет и три`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `двеста осемдесет и четири милиона сто
+                                деветдесет и шест хиляди седемдесет и три`
+                        ),
+                        284196073
+                    );
                 });
             });
 
             describe("Няколко числа от милиард до трилион", function () {
-                data.toTrillion.forEach((e) => {
-                    it(`проверка на числото ${e[1]}: ${e[0]}`, function () {
-                        assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
-                    });
+                it(`проверка на числото един милиард двеста осемдесет
+                        и девет милиона шестдесет и седем хиляди
+                        петстотин и четиридесет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `един милиард двеста осемдесет и девет милиона
+                                шестдесет и седем хиляди петстотин и четиридесет`
+                        ),
+                        1289067540
+                    );
+                });
+                it(`проверка на числото шест милиарда седемстотин петдесет
+                        и три милиона четиристотин деветнадесет хиляди
+                        осемстотин двадесет и три`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `шест милиарда седемстотин петдесет и три милиона
+                                четиристотин деветнадесет хиляди осемстотин двадесет и три`
+                        ),
+                        6753419823
+                    );
+                });
+                it(`четири милиарда шестстотин тридесет
+                        и два милиона сто петдесет и осем
+                        хиляди деветстотин седемдесет и едно`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `четири милиарда шестстотин тридесет
+                                и два милиона сто петдесет и осем
+                                хиляди деветстотин седемдесет и едно`
+                        ),
+                        4632158971
+                    );
+                });
+                it(`проверка на числото девет милиарда триста петдесет
+                        и седем милиона двеста четири хиляди
+                        шестстотин осемдесет и пет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `девет милиарда триста петдесет и седем милиона
+                                двеста четири хиляди шестстотин осемдесет и пет`
+                        ),
+                        9357204685
+                    );
+                });
+                it(`проверка на числото два милиарда осемстотин четиридесет
+                        и един милиона деветстотин шестдесет хиляди
+                        седемстотин и тридесет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `два милиарда осемстотин четиридесет и един милиона
+                                деветстотин шестдесет хиляди седемстотин и тридесет`
+                        ),
+                        2841960730
+                    );
+                });
+                it(`проверка на числото пет милиарда деветстотин
+                        двадесет и три милиона осемстотин четиридесет
+                        хиляди сто седемдесет и шест`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `пет милиарда деветстотин двадесет и три милиона
+                                осемстотин четиридесет хиляди сто седемдесет и шест`
+                        ),
+                        5923840176
+                    );
+                });
+                it(`проверка на числото седем милиарда четиристотин петдесет
+                        и шест милиона сто двадесет хиляди триста
+                        деветдесет и осем`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `седем милиарда четиристотин петдесет и шест милиона
+                                сто двадесет хиляди триста деветдесет и осем`
+                        ),
+                        7456120398
+                    );
+                });
+                it(`проверка на числото девет милиарда осемстотин и десет милиона
+                        седемстотин тридесет и шест хиляди двеста
+                        петдесет и четири`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `девет милиарда осемстотин и десет милиона седемстотин
+                                тридесет и шест хиляди двеста петдесет и четири`
+                        ),
+                        9810736254
+                    );
+                });
+                it(`проверка на числото три милиарда сто деветдесет
+                        и два милиона осемстотин петдесет
+                        и четири хиляди шестдесет и седем`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `три милиарда сто деветдесет и два милиона
+                                осемстотин петдесет и четири хиляди шестдесет и седем`
+                        ),
+                        3192854067
+                    );
+                });
+                it(`проверка на числото осем милиарда седемдесет
+                        и четири милиона деветстотин двадесет
+                        и една хиляда шестстотин тридесет и пет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `осем милиарда седемдесет и четири милиона деветстотин
+                                двадесет и една хиляда шестстотин тридесет и пет`
+                        ),
+                        8074921635
+                    );
+                });
+                it(`проверка на числото шест милиарда сто четиридесет
+                        и седем милиона деветстотин двадесет и осем
+                        хиляди триста петдесет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `шест милиарда сто четиридесет и седем милиона
+                                деветстотин двадесет и осем хиляди триста петдесет`
+                        ),
+                        6147928350
+                    );
+                });
+                it(`проверка на числото два милиарда петстотин тридесет
+                        и един милиона осемстотин деветдесет и шест хиляди
+                        седемстотин четиридесет и едно`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `два милиарда петстотин тридесет и един милиона
+                                осемстотин деветдесет и шест хиляди
+                                седемстотин четиридесет и едно`
+                        ),
+                        2531896741
+                    );
+                });
+                it(`проверка на числото три милиарда деветстотин осемдесет
+                        и пет милиона сто седемдесет и две хиляди четиридесет
+                        и шест`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `три милиарда деветстотин осемдесет и пет милиона
+                                сто седемдесет и две хиляди четиридесет и шест`
+                        ),
+                        3985172046
+                    );
+                });
+                it(`проверка на числото девет милиарда двеста седемдесет
+                        и четири милиона тридесет и шест хиляди
+                        сто осемдесет и пет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `девет милиарда двеста седемдесет и четири
+                                милиона тридесет и шест хиляди сто осемдесет и пет`
+                        ),
+                        9274036185
+                    );
+                });
+                it(`проверка на числото един милиард седемстотин петдесет
+                        и осем милиона двеста девет хиляди четиристотин
+                        тридесет и девет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `един милиард седемстотин петдесет и осем милиона
+                                двеста девет хиляди четиристотин тридесет и девет`
+                        ),
+                        1758209439
+                    );
                 });
             });
 
             describe("Няколко числа от трилион до квадрилион", function () {
-                data.toQuadrillion.forEach((e) => {
-                    it(`проверка на числото ${e[1]}: ${e[0]}`, function () {
-                        assert.equal(words2numbers(`Тест за числото ${e[1]}.`), e[0]);
-                    });
+                it(`проверка на числото сто двадесет и осем трилиона
+                        деветстотин и шест милиарда седемстотин петдесет
+                        и четири милиона тринадесет хиляди`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `проверка на числото сто двадесет и осем трилиона
+                                деветстотин и шест милиарда седемстотин петдесет
+                                и четири милиона тринадесет хиляди`
+                        ),
+                        128906754013000
+                    );
                 });
-            });
-
-            describe("Справка", function () {
-                it(`структурата с данни: ${JSON.stringify(data, null, 2)}`, function () {
-                    assert.equal(0, 0);
+                it(`проверка на числото шестстотин седемдесет и пет
+                        трилиона триста четиридесет и един милиард деветстотин
+                        осемдесет и два милиона триста и пет хиляди осемстотин и девет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `проверка на числото шестстотин седемдесет и пет
+                                трилиона триста четиридесет и един милиард деветстотин
+                                осемдесет и два милиона триста и пет хиляди осемстотин и девет`
+                        ),
+                        675341982305809
+                    );
+                });
+                it(`проверка на числото четиристотин шестдесет
+                        и три трилиона двеста и петнадесет милиарда
+                        осемстотин деветдесет и седем милиона сто двадесет
+                        и девет хиляди четиридесет и пет`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `проверка на числото четиристотин шестдесет
+                                и три трилиона двеста и петнадесет милиарда
+                                осемстотин деветдесет и седем милиона сто двадесет
+                                и девет хиляди четиридесет и пет`
+                        ),
+                        463215897129045
+                    );
+                });
+                it("проверка на числото деветстотин тридесет и пет трилиона седемстотин и двадесет милиарда четиристотин шестдесет и осем милиона петстотин седемдесет и осем хиляди двеста двадесет и едно", function () {
+                    assert.equal(
+                        words2numbers(
+                            `проверка на числото деветстотин тридесет и пет
+                                трилиона седемстотин и двадесет милиарда четиристотин
+                                шестдесет и осем милиона петстотин седемдесет и осем
+                                хиляди двеста двадесет и едно`
+                        ),
+                        935720468578221
+                    );
+                });
+                it(`проверка на числото двеста осемдесет и четири трилиона
+                        сто деветдесет и шест милиарда седемдесет и три милиона
+                        деветдесет и едно хиляди, осемстотин осемдесет и осем`, function () {
+                    assert.equal(
+                        words2numbers(
+                            `двеста осемдесет и четири трилиона сто деветдесет
+                                и шест милиарда седемдесет и три милиона деветдесет
+                                и едно хиляди, осемстотин осемдесет и осем`
+                        ),
+                        284196073091888
+                    );
                 });
             });
         </script>
